@@ -1,0 +1,79 @@
+# Конфигурация DataCollectionAgent для сбора данных о недвижимости в Санкт-Петербурге
+
+# Описание задачи ML
+ml_task:
+  name: "Real Estate Price Prediction"
+  description: "Предсказание цен на недвижимость в Санкт-Петербурге"
+  type: "regression"
+  target_column: "price"
+  features:
+    - location
+    - area_sqm
+    - rooms
+    - floor
+    - property_type
+
+# Источники данных
+sources:
+  # Источник 1: Датасет с Kaggle (открытый датасет по недвижимости)
+  - type: "csv"
+    name: "saint-petersburg-real-estate"
+    path: "data/raw/spb_real_estate.csv"
+    description: "Датасет по недвижимости Санкт-Петербурга"
+    
+  # Источник 2: HuggingFace датасет (если доступен)
+  - type: "hf_dataset"
+    name: ""
+    description: "Резервный источник из HuggingFace"
+    
+  # Источник 3: Синтетические данные на основе шаблонов
+  - type: "synthetic"
+    description: "Сгенерированные данные на основе реальных паттернов"
+    count: 500
+
+# Параметры сбора данных
+collection:
+  # Задержка между запросами (для скрапинга)
+  delay_seconds: 2
+  
+  # Максимальное количество записей с одного источника
+  max_records_per_source: 5000
+  
+  # Удаление дубликатов
+  remove_duplicates: true
+  
+  # Минимальная длина текста описания
+  min_description_length: 20
+
+# Параметры обработки данных
+processing:
+  # Нормализация цен
+  normalize_prices: true
+  target_currency: "RUB"
+  
+  # Обработка пропущенных значений
+  fill_missing:
+    area_sqm: "median"
+    rooms: "mode"
+    floor: "median"
+  
+  # Фильтрация выбросов
+  outlier_removal:
+    price:
+      min: 100000
+      max: 500000000
+    area_sqm:
+      min: 10
+      max: 500
+
+# Пути для сохранения данных
+output:
+  raw_data: "data/raw/"
+  processed_data: "data/processed/"
+  logs: "logs/"
+
+# Настройки логирования
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/data_collection.log"
