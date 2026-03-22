@@ -1,3 +1,5 @@
+# annotation_agent.py
+
 """
 AnnotationAgent - агент для автоматической разметки данных.
 

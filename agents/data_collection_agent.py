@@ -1,3 +1,5 @@
+# data_collection_agent.py
+
 """
 DataCollectionAgent - агент для сбора данных из различных источников.
 Поддерживает HuggingFace datasets, Kaggle, веб-скрапинг и API.
