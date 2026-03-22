@@ -1,7 +1,7 @@
 
 Агент 4
 
-Необходимо построить агента для умного отбора данных (Active Learning). Агент войдёт в финальный пайплайн как active_learning_op.
+Необходимо построить агента для умного отбора данных (Active Learning) по теме @ТЕМА@. Агент войдёт в финальный пайплайн как active_learning_op.
 
 АРХИТЕКТУРА АГЕНТА
 
@@ -29,9 +29,11 @@ history = agent.run_cycle(
 # → history: список {iteration, n_labeled, accuracy, f1}
 agent.report(history)  # → learning_curve.png
 
-ЧТО СДАТЬ (ТРЕК A)
+ЧТО СДАТЬ
 
 - AL-цикл: старт с N=50 → 5 итераций → финальная модель
 - Сравнение стратегий: entropy vs random — кривые обучения на одном графике
 - Вывод: сколько примеров сэкономлено при том же качестве (accuracy/F1) vs random baseline
 - Файл: agents/al_agent.py + notebooks/al_experiment.ipynb
+
+Напоминаю, что @TEMA@ == недвижимость (аренда и продажа) в Санкт-Петербурге
