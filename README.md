@@ -1,5 +1,7 @@
 # ML Data Pipeline: Недвижимость Санкт-Петербурга
 
+DEMO: https://drive.google.com/file/d/142MOLSdsmbAwpbKAEXX7FRWLGl8AwYyP/view?usp=sharing
+
 Единый пайплайн из 4 агентов для сбора, очистки, разметки и умного отбора данных о недвижимости СПб. Запускается одним ноутбуком с точками Human-in-the-Loop.
 
 ---
